@@ -1,12 +1,13 @@
 const GIPHY_SEARCH = 'ttps://api.giphy.com/v1/gifs/search'
+const CACHE_RETENTION = 60 * 1000 * 1;
 
 const request = require('request');
 
-const GIPHY = function(key) {
+const Giphy = function(key) {
     //instance members
     this.key = key;
     //local cache instance
-
+this.cache = { };
 };
 
 //class member
@@ -40,7 +41,7 @@ Giphy.prototype.search = function(searchTerm, resultCount) {
     }));
 };
 
-Giphy.prototy.saveToCache = function(searchTerm, result){
+Giphy.prototype.saveToCache = function(searchTerm, result){
     let term = searchTerm.toLowercase();
     const record = {
         searchTerm: term,
