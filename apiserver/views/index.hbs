@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search Giphy</title>
+</head>
+
+<body>
+  <h1>Giphy Saerch</h1>
+
+  <form method="GET" action="/search">
+
+    <table>
+
+      <tr>
+        <td>Search Term:</td>
+        <td>
+          <input type="text" name="searchTerm">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Result:</td>
+        <td><input type="number" name="resultCount" value="10" min="1"></td>
+      </tr>
+
+      <tr>
+        <button type="submit">Search</button>
+      </tr>
+
+    </table>
+
+  </form>
+
+  {{#if searchTerm }}
+  <h2>Search result for '{{ searchTerm }}' (cache: {{ fromCache }}</h2>
+
+
+  {{#each images}}
+  <div> <img src="{{this}}" alt=""></div>
+  {{/each}}
+
+  {{/if}}
+</body>
+
+</html>
